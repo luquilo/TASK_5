@@ -1,5 +1,6 @@
 <script setup>
 import ProductCard from './components/rakamin-e__commerce/ProductCard.vue';
+import VuexComponent from './components/vuex-learn/vuex.vue'
 
 
 </script>
@@ -7,7 +8,7 @@ import ProductCard from './components/rakamin-e__commerce/ProductCard.vue';
 <template>
   <div id="app">
     <ProductCard/>
-
+    <VuexComponent />
   </div>
 </template>
 

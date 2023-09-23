@@ -29,7 +29,14 @@ export default{
 			})
 			.then(data => {
 				console.log(data)
-        this.cloths = data
+				console.log(typeof {name: 'luqman'})
+				console.log(typeof [])
+				if (data instanceof Array) {
+					this.cloths = data
+					return;
+				}
+
+				this.cloths = [data];
 			})
 			.catch(error => {
 				console.log('Error : ', error)
