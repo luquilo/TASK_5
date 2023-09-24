@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h1>vuex goes here</h1>
+		<p>Real index : {{ $store.state.productIndex }}</p>
 		<p>Count : {{ $store.getters.realCount}}</p>
 		<button @click="increment">Increment</button>
 		<button @click="decrement">Decrement</button>

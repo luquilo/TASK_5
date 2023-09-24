@@ -1,0 +1,8 @@
+todo (based on = https://www.rakamin.com/virtual-internship-experience/task/front-end-developer-core-insiative/15186)
+
+- vue 2
+- fetch api 20 data
+- pakai increment (state)
+- data() yang mengandung men, women, jangan simpan selain itu
+- #if men | women => show (response masuk ke data() ), else => un-available (response tidak masuk ke data() )
+- 
