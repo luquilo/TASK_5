@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>this message component</h1>
-		<input-component :mail="mail" @messageChanged="mail = $event"></input-component>
+		<input-component :anu="anu" :mail="mail" @messageChanged="mail = $event"></input-component>
 	</div>
 </template>
 
@@ -15,7 +15,8 @@ export default{
 	},
   data(){
 	  return{
-		  mail: 'send an email'
+		  mail: 'send an email',
+			anu: 'anu pokoe'
 	  }
   },
 }

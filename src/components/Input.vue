@@ -1,16 +1,18 @@
 <template>
 	<div>
-    <input type="text" :value="mail" @input="changeMessage" >
+    <input type="text" @input="changeMessage" >
 		<h3>{{ inputedMessage }}</h3>
+		<p>{{ mail }}</p>
+		<p>{{ anu }}</p>
 	</div>
 </template>
 
 <script>
 export default{
-	props: ['mail'],
+	props: ['mail', 'anu'],
 	data(){
 		return{
-			inputedMessage: ''
+			inputedMessage: 'sfdsdfs'
 		}
 	},
 	methods:{
