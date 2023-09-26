@@ -2,14 +2,12 @@
 import ProductCard from './components/rakamin-e__commerce/ProductCard.vue';
 import VuexComponent from './components/vuex-learn/vuex.vue'
 import ProductDisplay from './components/ProductDisplay.vue';
-import Message from './components/Message.vue';
 
 </script>
 
 <template>
   <div id="app">
     <ProductDisplay/>
-    <Message/>
   </div>
 </template>
 
@@ -24,4 +22,9 @@ import Message from './components/Message.vue';
 	--color-black: #1E1E1E;
 	--color-white: #FFF;
   }
+
+	body{
+		height: 100vh;
+		background: linear-gradient(var(--color-light-purple) 66%, var(--color-white) 66%)
+	}
 </style>
