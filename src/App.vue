@@ -1,17 +1,21 @@
 <script setup>
-import ProductCard from './components/rakamin-e__commerce/ProductCard.vue';
-import VuexComponent from './components/vuex-learn/vuex.vue'
 import ProductDisplay from './components/ProductDisplay.vue';
+
 
 </script>
 
 <template>
   <div id="app">
     <ProductDisplay/>
-  </div>
+</div>
 </template>
 
 <style>
+  *{
+		padding: 0;
+		margin: 0;
+	}
+
   :root{
 	--color-dark-blue: #002772;
 	--color-light-blue: #D6E6FF;
@@ -23,8 +27,8 @@ import ProductDisplay from './components/ProductDisplay.vue';
 	--color-white: #FFF;
   }
 
-	body{
+	/* #app{
 		height: 100vh;
 		background: linear-gradient(var(--color-light-purple) 66%, var(--color-white) 66%)
-	}
+	} */
 </style>

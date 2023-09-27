@@ -2,7 +2,7 @@
 	<div>
 		<h1>cloths goes here</h1>
 		<ol>
-			<li v-for="cloth in cloths" :key="cloth.id">{{ cloth.category }}</li>
+			<li v-for="cloth in cloths" :key="cloth.id">{{ cloth.title }} delete, edit, tambah</li>
 		</ol>
 </div>
 </template>
@@ -14,7 +14,6 @@
 export default{
 	data(){
 	  return{
-			name: 'MUHAMMAD LUQMANUL HAKIM',
 			cloths: []
 		
 		}	

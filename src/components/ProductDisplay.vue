@@ -1,43 +1,69 @@
 <template>
-	<div class="container">
+	<div>
+    
+		<!-- <loading-component v-if="loading"></loading-component> -->
+		<men-component :fetchproducts="fetchproducts" :product="product"></men-component>
+		<!-- <women-component></women-component>
+    <unavailable-component></unavailable-component> -->
 
-		<h1>this is product display</h1>
-		<p>my name is {{ name }}</p>
-		<p>product index now : {{ $store.state.productIndex }}</p>
-		<button @click="incrementIndex">next button</button>
-
-	</div>
+		
+	</div	>
 </template>
 
 <script>
+  import Men from './Men.vue';
+	import Women from './Women.vue';
+	import Unavailable from './Unavailable.vue';
+  import Loading from './Loading.vue';
+
   export default{
 		// commit is used to call mutations
-    data(){
+    components:{
+			'men-component': Men,
+			'women-component': Women,
+			'unavailable-component': Unavailable,
+			'loading-component': Loading
+		},
+		data(){
 			return{
-				name: 'muhammad luqmanul hakim'
+				loading: false,
+				products:[],
+				product: {}
+
 			}
 		},
 		methods:{
+			logg(){
+				console.log(this.products)
+				console.log(typeof this.products)
+				console.log(this.products.title)
+			},
 			incrementIndex(){
 				this.$store.commit('incrementIndex')
+			},
+			async fetchproducts(){
+				this.loading = true
+				try{
+					const response = await fetch(`https://fakestoreapi.com/products/${this.$store.state.productIndex}`)
+					if(!response.ok){
+						throw new Error('network response was not ok')
+					}
+					const data = await response.json()
+					this.product = data
+				}catch(error){
+					console.error('error : ', error)
+				} finally {
+					this.$store.commit('incrementIndex')
+					this.loading = false
+				}
 			}
+		},
+		created(){
+			this.fetchproducts()
 		}
 	}
 </script>
 
 <style>
-   :root{
-	--color-dark-blue: #002772;
-	--color-light-blue: #D6E6FF;
-	--color-dark-purple: #720060;
-	--color-light-purple: #FDE2FF;
-	--color-dark-brown: #3F3F3F;
-	--color-light-brown: #DCDCDC;
-	--color-black: #1E1E1E;
-	--color-white: #FFF;
-  }
-  p{
-		color: green;
-	}
 
 </style>

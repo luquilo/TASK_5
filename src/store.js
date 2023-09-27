@@ -5,7 +5,6 @@ Vue.use(Vuex)
 
 const state = {
 	// application state
-  count : 0,
 	productIndex: 1,
 	APIData : []
 }
@@ -18,11 +17,13 @@ const mutations = {
 		}else{
 			state.productIndex = 1
 		}
+
 	}
 }
 
 const actions = {
 	// used to perform asynchronous operations
+  
 }
 
 const getters = {
