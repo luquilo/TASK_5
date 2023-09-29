@@ -1,11 +1,11 @@
 <template>
 	<div>
     
-		<!-- <loading-component v-if="loading"></loading-component> -->
-		<men-component :fetchproducts="fetchproducts" :product="product"></men-component>
-		<!-- <women-component></women-component>
-    <unavailable-component></unavailable-component> -->
-
+		<loading-component v-if="loading"></loading-component>
+		<men-component v-if="!loading && product && product.category === category.men" :fetchproducts="fetchproducts" :product="product"></men-component>
+		<women-component v-else-if="!loading && product && product.category === category.women" :fetchproducts="fetchproducts" :product="product"></women-component>
+    <unavailable-component v-else-if="!loading" :fetchproducts="fetchproducts"></unavailable-component>
+		<!-- <h1 v-else>error, call the programmer</h1> -->
 		
 	</div	>
 </template>
@@ -28,16 +28,15 @@
 			return{
 				loading: false,
 				products:[],
-				product: {}
+				product: {},
+				category:{
+					men:"men's clothing",
+					women:"women's clothing"
+				}
 
 			}
 		},
 		methods:{
-			logg(){
-				console.log(this.products)
-				console.log(typeof this.products)
-				console.log(this.products.title)
-			},
 			incrementIndex(){
 				this.$store.commit('incrementIndex')
 			},

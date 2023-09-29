@@ -1,37 +1,41 @@
 <template>
 	<div class="men">
-		
-		<!-- <h1>{{ product ? product.title : 'Loading...' }}</h1>
-			<h1>{{ product ? product.id : 'Loading...' }}</h1>
-			<h1>{{ product ? product.category : 'Loading...' }}</h1> -->
 			
 			<div class="container">
 				<div class="image" v-if="product">
 					<img :src="product.image" :alt="product.title">
 				</div>
 				<div class="details">
-					<h1 class="title">{{ product.title }}</h1>
+					<div class="top-details">
+						<h1 class="title">{{ product.title }}</h1>
 					<div style="display: flex; justify-content: space-between;">
 						<h2>{{ product.category }}</h2>
-						<div class="rate">
-							<p style="margin: 0 10px;">{{ product.rating.rate }} / 5</p>
-							<div class="rate-bullets"></div>
-							<div class="rate-bullets"></div>
-							<div class="rate-bullets"></div>
-							<div class="rate-bullets"></div>
-							<div class="rate-bullets"></div>
+						<div class="rate" v-if="product.rating && typeof product.rating.rate === 'number'" >
+							<p style="margin: 0 10px;">{{ product.rating.rate.toFixed(1) }} / 5</p>
+
+							<div class=""></div>
+							<div class=""></div>
+							<div class=""></div>
+							<div class=""></div>
+							<div class=""></div>
+
+							<div v-for="index in renderBlueCircle()" :key="index+10" class="rate-circle-blue"></div>
+							<div v-for="index in renderWhiteCircle()" :key="index+20" class="rate-circle-white"></div>
 						</div>
 					</div>
 					<hr>
-					<p>{{ product.description }}</p>
-					<hr>
-					<p>{{ product.price }}</p>
-					<button @click="callFetchproducts">next product</button>
-			</div>
- 
-			
-
-		</div>
+					<p class="product-description">{{ product.description }}</p>
+					</div>
+					<div class="bottom-details">
+						<hr>
+					<p class="price">${{ product.price }}</p>
+					<div class="buttons">
+						<button class="buy-button">Buy Now</button>
+					  <button @click="callFetchproducts" class="next-button">next product</button>
+					</div>
+				</div>
+			  </div>
+		  </div>
 		
 
 
@@ -51,19 +55,20 @@
 			}
 		},	
 		methods:{
-			loggg(){
-				console.log(this.product)
-				if(this.product){
-					console.log(this.product.title)
-				}else{
-					console.log('not available yet')
-				}
+			renderBlueCircle(){
+				const blueCircle = Math.round(this.product.rating.rate)
+				console.log(blueCircle)
+				return blueCircle
+			},
+			renderWhiteCircle(){
+				const blueCircle = Math.round(this.product.rating.rate)
+				const whiteCircle = 5 - blueCircle				
+				return whiteCircle
 			},
 			callFetchproducts(){
 				this.fetchproducts()
-			}
-		},
-
+			},
+		}
 	}
 </script>
 
@@ -108,15 +113,35 @@
 		display: flex;
 		flex-direction: column;
 	  margin: 50px;
+		justify-content: space-between;
 	}
-
-	.details > h1{
-		margin: 15px 0;
+	.title{
 		color: var(--color-dark-blue);
+		margin: 15px 0;
 		font-size: 28px;
 		font-family: Inter;
 		font-weight: 600;
 		word-wrap: break-word;
+	}
+
+	hr{
+		color: var(--color-light-brown);
+		opacity: 40%;
+	}
+	.top-details{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.bottom-details{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.buttons{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
 	}
 
 	h2 {
@@ -139,13 +164,40 @@
 	}
 
 
-	.rate-bullets{
+	.rate-circle-white{
 		width: 18px;
 		height: 18px;
 		margin: 1px;
 		background: var(--color-white);
 		border: 1px solid var(--color-dark-blue);
 		border-radius: 50%;
+	}
+
+	.rate-circle-blue{
+		width: 18px;
+		height: 18px;
+		margin: 1px;
+		background: var(--color-dark-blue);
+		border: 1px solid var(--color-dark-blue);
+		border-radius: 50%;
+	}
+	
+  .product-description{
+		color: var(--color-black);
+		font-size: 20px;
+		font-family: Inter;
+		font-weight: 400;
+		word-wrap: break-word; 
+	  padding: 30px 0;
+	}
+
+	.price{
+		color: var(--color-dark-blue);
+		font-size: 28px;
+		font-weight: 600;
+		font-family: Inter;
+		word-wrap: break-word;
+		padding: 16.5px 0;
 	}
 
 </style>
