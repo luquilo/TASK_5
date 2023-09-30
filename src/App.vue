@@ -3,7 +3,6 @@ import ProductDisplay from './components/ProductDisplay.vue';
 
 
 </script>
-
 <template>
   <div id="app">
     <ProductDisplay/>
@@ -26,9 +25,4 @@ import ProductDisplay from './components/ProductDisplay.vue';
 	--color-black: #1E1E1E;
 	--color-white: #FFF;
   }
-
-	/* #app{
-		height: 100vh;
-		background: linear-gradient(var(--color-light-purple) 66%, var(--color-white) 66%)
-	} */
 </style>

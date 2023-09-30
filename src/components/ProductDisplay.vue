@@ -5,7 +5,6 @@
 		<men-component v-if="!loading && product && product.category === category.men" :fetchproducts="fetchproducts" :product="product"></men-component>
 		<women-component v-else-if="!loading && product && product.category === category.women" :fetchproducts="fetchproducts" :product="product"></women-component>
     <unavailable-component v-else-if="!loading" :fetchproducts="fetchproducts"></unavailable-component>
-		<!-- <h1 v-else>error, call the programmer</h1> -->
 		
 	</div	>
 </template>
@@ -17,7 +16,6 @@
   import Loading from './Loading.vue';
 
   export default{
-		// commit is used to call mutations
     components:{
 			'men-component': Men,
 			'women-component': Women,
@@ -27,7 +25,6 @@
 		data(){
 			return{
 				loading: false,
-				products:[],
 				product: {},
 				category:{
 					men:"men's clothing",

@@ -6,7 +6,6 @@ Vue.use(Vuex)
 const state = {
 	// application state
 	productIndex: 1,
-	APIData : []
 }
 
 const mutations = {
@@ -21,19 +20,7 @@ const mutations = {
 	}
 }
 
-const actions = {
-	// used to perform asynchronous operations
-  
-}
-
-const getters = {
-	// used to access and compute state properties (access computed value, not to update the state)
-
-}
-
 export default new Vuex.Store({
 	state,
-	mutations,
-	actions,
-	getters
+	mutations
 })
